@@ -2,9 +2,21 @@
 
 [ext_resource type="PackedScene" uid="uid://itifovkwws3d" path="res://scenes/player/player.tscn" id="1_62it3"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r3ihy"]
+distance = -40.0
+
 [node name="Playground" type="Node2D" unique_id=2014361207]
 
 [node name="Player" parent="." unique_id=1574617212 instance=ExtResource("1_62it3")]
+position = Vector2(-48, -32)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=314845688]
 zoom = Vector2(5, 5)
+
+[node name="Suelo" type="StaticBody2D" parent="." unique_id=1106949967]
+
+[node name="Sprite2D" type="Sprite2D" parent="Suelo" unique_id=1425875888]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Suelo" unique_id=612522746]
+position = Vector2(0, 8)
+shape = SubResource("WorldBoundaryShape2D_r3ihy")
