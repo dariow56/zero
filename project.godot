@@ -11,6 +11,10 @@ config_version=5
 [application]
 
 config/name="zero"
+config/description="Un guerrero sin recuerdos debe explorar un mundo digital lleno de enemigos donde es confundido por el sistema como un virus. Deberá llegar hasta el kernel para poder investigar sobre su pasado, recuperar sus recuerdos y descubrir cuál es la razón de su existencia.
+
+Al dar tus primeros pasos, el cielo digital parpadea en rojo; los centinelas del sistema operativo, los antivirus y cortafuegos te detectan; para ellos no eres una persona; eres la anomalía y debe ser purgada. Para sobrevivir en este mundo hostil, debes aprender a moverte, esquivar sus protocolos de limpieza y defenderte con rapidez."
+run/main_scene="uid://mcm0lvjr7jd1"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -25,6 +29,7 @@ window/stretch/aspect="expand"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

@@ -123,9 +123,19 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3ihy"]
+size = Vector2(6, 16)
+
 [node name="Player" type="CharacterBody2D" unique_id=1574617212]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=675687901]
+position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_r3ihy")
-animation = &"fall"
+animation = &"idle"
 autoplay = "idle"
+frame = 1
+frame_progress = 0.58025503
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=508407056]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_r3ihy")
