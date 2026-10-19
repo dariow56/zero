@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://itifovkwws3d"]
 
 [ext_resource type="Texture2D" uid="uid://dreniv0kf6006" path="res://sprites/player/Player.png" id="1_8afob"]
+[ext_resource type="Script" uid="uid://c564q46qywjil" path="res://scripts/player/player.gd" id="1_dovo2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dovo2"]
 atlas = ExtResource("1_8afob")
@@ -127,6 +128,7 @@ animations = [{
 size = Vector2(6, 16)
 
 [node name="Player" type="CharacterBody2D" unique_id=1574617212]
+script = ExtResource("1_dovo2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=675687901]
 position = Vector2(0, -16)
