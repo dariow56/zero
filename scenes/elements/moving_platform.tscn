@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://str6ucvocklu"]
+
+[ext_resource type="Script" uid="uid://b32526plje5to" path="res://scripts/elements/moving_platform.gd" id="1_ieqqv"]
+[ext_resource type="PackedScene" uid="uid://ccve35wjk7opg" path="res://scenes/elements/platform.tscn" id="2_ieqqv"]
+
+[sub_resource type="Animation" id="Animation_c53nr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_y4d5c"]
+resource_name = "movement"
+length = 4.0
+loop_mode = 2
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_63r6y"]
+_data = {
+&"RESET": SubResource("Animation_c53nr"),
+&"movement": SubResource("Animation_y4d5c")
+}
+
+[node name="MovingPlatform" type="Path2D" unique_id=1586898112]
+script = ExtResource("1_ieqqv")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=205759250]
+rotates = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D" unique_id=1508389988]
+remote_path = NodePath("../../Platform")
+
+[node name="Platform" parent="." unique_id=1459470949 instance=ExtResource("2_ieqqv")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=235628466]
+libraries/ = SubResource("AnimationLibrary_63r6y")
