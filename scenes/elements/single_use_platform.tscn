@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://wlc1q1j6u65"]
+
+[ext_resource type="Script" uid="uid://cano1387nc8f3" path="res://scripts/elements/single_use_platform.gd" id="1_uitvc"]
+[ext_resource type="Texture2D" uid="uid://5vyj1nfupubl" path="res://sprites/env/ground.png" id="1_xn33u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4opm4"]
+size = Vector2(16, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xn33u"]
+size = Vector2(15, 1)
+
+[node name="SingleUsePlatform" type="StaticBody2D" unique_id=1534117499]
+script = ExtResource("1_uitvc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1653482768]
+shape = SubResource("RectangleShape2D_4opm4")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2116965134]
+texture = ExtResource("1_xn33u")
+region_enabled = true
+region_rect = Rect2(128, 64, 16, 9)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1490666981]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=484227559]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_xn33u")
+debug_color = Color(0.8227256, 0.3604673, 0.46826112, 0.41960785)
+
+[node name="Timer" type="Timer" parent="." unique_id=180478059]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
