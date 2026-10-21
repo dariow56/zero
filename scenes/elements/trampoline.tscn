@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dw2y2xfoinxud"]
 
 [ext_resource type="Script" uid="uid://mwx8nnkk6u3s" path="res://scripts/elements/trampoline.gd" id="1_8thoe"]
-[ext_resource type="Texture2D" uid="uid://cikoh3a835gfw" path="res://sprites/env/Props.png" id="1_wqxgn"]
+[ext_resource type="Texture2D" uid="uid://cikoh3a835gfw" path="res://sprites/env/props.png" id="1_wqxgn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8alnm"]
 atlas = ExtResource("1_wqxgn")
@@ -66,6 +66,6 @@ animation = &"bounce"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1183543849]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_wqxgn")
-debug_color = Color(0.6940736, 0.3300258, 0.92020094, 0.41960785)
+debug_color = Color(0.8784314, 0.3019608, 0.41960785, 0.41960785)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

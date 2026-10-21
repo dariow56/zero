@@ -3,10 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://itifovkwws3d" path="res://scenes/player/player.tscn" id="1_62it3"]
 [ext_resource type="Texture2D" uid="uid://5vyj1nfupubl" path="res://sprites/env/ground.png" id="2_n6048"]
 [ext_resource type="PackedScene" uid="uid://cevsen4v3yxq7" path="res://scenes/elements/disappearing_platform.tscn" id="3_63r6y"]
-[ext_resource type="Texture2D" uid="uid://cikoh3a835gfw" path="res://sprites/env/Props.png" id="3_o8weq"]
+[ext_resource type="Texture2D" uid="uid://cikoh3a835gfw" path="res://sprites/env/props.png" id="3_o8weq"]
 [ext_resource type="PackedScene" uid="uid://str6ucvocklu" path="res://scenes/elements/moving_platform.tscn" id="4_c53nr"]
 [ext_resource type="PackedScene" uid="uid://wlc1q1j6u65" path="res://scenes/elements/single_use_platform.tscn" id="5_y4d5c"]
 [ext_resource type="PackedScene" uid="uid://dw2y2xfoinxud" path="res://scenes/elements/trampoline.tscn" id="7_i1gjs"]
+[ext_resource type="PackedScene" uid="uid://cmwvvf5i3ebav" path="res://scenes/elements/heart_container.tscn" id="8_kgnh5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o8weq"]
 texture = ExtResource("2_n6048")
@@ -837,7 +838,7 @@ point_count = 5
 
 [node name="Player" parent="." unique_id=1574617212 instance=ExtResource("1_62it3")]
 z_index = 1
-position = Vector2(-48, 128)
+position = Vector2(-304, 48)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=314845688]
 position = Vector2(0, -8)
@@ -854,25 +855,25 @@ tile_set = SubResource("TileSet_r3ihy")
 tile_map_data = PackedByteArray("AAD//woAAAAAAAgAAAAAAAoAAAABAAoAAAABAAoAAAACAAgAAAD//wkAAAAAAAYAAAAAAAkAAAABAAkAAAABAAkAAAACAAYAAAAUAAMAAAAAAAMAAAAUAAQAAAAAAAQAAAAVAAMAAAABAAMAAAAVAAQAAAABAAQAAAAWAAMAAAABAAMAAAAWAAQAAAABAAQAAAAXAAMAAAABAAMAAAAXAAQAAAABAAQAAAAYAAMAAAABAAMAAAAYAAQAAAABAAQAAAAZAAMAAAABAAMAAAAZAAQAAAABAAQAAAAaAAMAAAABAAMAAAAaAAQAAAABAAQAAAAbAAMAAAABAAMAAAAbAAQAAAABAAQAAAAcAAMAAAABAAMAAAAcAAQAAAABAAQAAAAdAAMAAAABAAMAAAAdAAQAAAABAAQAAAAeAAMAAAABAAMAAAAeAAQAAAABAAQAAAAfAAMAAAABAAMAAAAfAAQAAAABAAQAAAAgAAMAAAABAAMAAAAgAAQAAAABAAQAAAAhAAMAAAABAAMAAAAhAAQAAAABAAQAAAAiAAMAAAABAAMAAAAiAAQAAAABAAQAAAAjAAMAAAABAAMAAAAjAAQAAAABAAQAAAAkAAMAAAABAAMAAAAkAAQAAAABAAQAAAAVAAcAAAABAAQAAAAVAAgAAAABAAUAAAAWAAcAAAABAAQAAAAWAAgAAAABAAUAAAAXAAcAAAABAAQAAAAXAAgAAAABAAUAAAAYAAcAAAABAAQAAAAYAAgAAAABAAUAAAAZAAcAAAABAAQAAAAZAAgAAAABAAUAAAAaAAcAAAABAAQAAAAaAAgAAAABAAUAAAAbAAcAAAABAAQAAAAbAAgAAAABAAUAAAAcAAcAAAABAAQAAAAcAAgAAAABAAUAAAAdAAcAAAABAAQAAAAdAAgAAAABAAUAAAAeAAcAAAABAAQAAAAeAAgAAAABAAUAAAAfAAcAAAABAAQAAAAfAAgAAAABAAUAAAAgAAcAAAABAAQAAAAgAAgAAAABAAUAAAAhAAcAAAABAAQAAAAhAAgAAAABAAUAAAAiAAcAAAABAAQAAAAiAAgAAAABAAUAAAAjAAcAAAABAAQAAAAjAAgAAAABAAUAAAAkAAcAAAABAAQAAAAkAAgAAAABAAUAAAAUAAUAAAAAAAQAAAAUAAYAAAAAAAQAAAAUAAcAAAAAAAQAAAAUAAgAAAAAAAUAAAAYAAYAAAABAAQAAAAYAAUAAAABAAQAAAAXAAUAAAABAAQAAAAWAAUAAAABAAQAAAAVAAUAAAABAAQAAAAVAAYAAAABAAQAAAAWAAYAAAABAAQAAAAXAAYAAAABAAQAAAAZAAUAAAABAAQAAAAZAAYAAAABAAQAAAAaAAYAAAABAAQAAAAaAAUAAAABAAQAAAAbAAUAAAABAAQAAAAbAAYAAAABAAQAAAAcAAYAAAABAAQAAAAcAAUAAAABAAQAAAAdAAUAAAABAAQAAAAdAAYAAAABAAQAAAAeAAYAAAABAAQAAAAeAAUAAAABAAQAAAAfAAUAAAABAAQAAAAfAAYAAAABAAQAAAAgAAYAAAABAAQAAAAgAAUAAAABAAQAAAAhAAUAAAABAAQAAAAhAAYAAAABAAQAAAAiAAYAAAABAAQAAAAiAAUAAAABAAQAAAAjAAUAAAABAAQAAAAjAAYAAAABAAQAAAAkAAYAAAABAAQAAAAkAAUAAAABAAQAAAAlAAMAAAACAAMAAAAlAAQAAAACAAQAAAAlAAUAAAACAAQAAAAlAAYAAAACAAQAAAAlAAcAAAACAAQAAAAlAAgAAAACAAUAAAA=")
 tile_set = SubResource("TileSet_n6048")
 
-[node name="MovingPlatforms2" type="Node" parent="." unique_id=672340770]
+[node name="MovingPlatforms" type="Node" parent="." unique_id=672340770]
 
-[node name="MovingPlatform" parent="MovingPlatforms2" unique_id=1586898112 instance=ExtResource("4_c53nr")]
+[node name="MovingPlatform" parent="MovingPlatforms" unique_id=1586898112 instance=ExtResource("4_c53nr")]
 position = Vector2(-224, 56)
 curve = SubResource("Curve2D_c53nr")
 loop = false
 
-[node name="MovingPlatform2" parent="MovingPlatforms2" unique_id=1797947268 instance=ExtResource("4_c53nr")]
+[node name="MovingPlatform2" parent="MovingPlatforms" unique_id=1797947268 instance=ExtResource("4_c53nr")]
 position = Vector2(184, 208)
 curve = SubResource("Curve2D_y4d5c")
 loop = false
 
-[node name="MovingPlatform3" parent="MovingPlatforms2" unique_id=546752681 instance=ExtResource("4_c53nr")]
+[node name="MovingPlatform3" parent="MovingPlatforms" unique_id=546752681 instance=ExtResource("4_c53nr")]
 position = Vector2(264, 280)
 curve = SubResource("Curve2D_63r6y")
 loop = false
 speed = 2.5
 
-[node name="MovingPlatform4" parent="MovingPlatforms2" unique_id=1531594632 instance=ExtResource("4_c53nr")]
+[node name="MovingPlatform4" parent="MovingPlatforms" unique_id=1531594632 instance=ExtResource("4_c53nr")]
 position = Vector2(714, 352)
 curve = SubResource("Curve2D_i1gjs")
 speed = 1.5
@@ -918,3 +919,14 @@ position = Vector2(136, 280)
 
 [node name="Trampoline" parent="Traps" unique_id=532741071 instance=ExtResource("7_i1gjs")]
 position = Vector2(8, 264)
+
+[node name="Collectables" type="Node" parent="." unique_id=852010779]
+
+[node name="HeartContainer" parent="Collectables" unique_id=878051227 instance=ExtResource("8_kgnh5")]
+position = Vector2(736, 280)
+
+[node name="HeartContainer2" parent="Collectables" unique_id=2069893040 instance=ExtResource("8_kgnh5")]
+position = Vector2(248, -8)
+
+[node name="HeartContainer3" parent="Collectables" unique_id=486250355 instance=ExtResource("8_kgnh5")]
+position = Vector2(-168, 248)

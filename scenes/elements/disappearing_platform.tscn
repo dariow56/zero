@@ -27,7 +27,7 @@ one_way_collision = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=997609150]
 position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_lvt73")
-debug_color = Color(0.87828636, 0.30226076, 0.4188997, 0.41960785)
+debug_color = Color(0.8784314, 0.3019608, 0.41960785, 0.41960785)
 
 [node name="DisappearTimer" type="Timer" parent="." unique_id=1676759348]
 one_shot = true
