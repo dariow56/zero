@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://dw2y2xfoinxud"]
+
+[ext_resource type="Script" uid="uid://mwx8nnkk6u3s" path="res://scripts/elements/trampoline.gd" id="1_8thoe"]
+[ext_resource type="Texture2D" uid="uid://cikoh3a835gfw" path="res://sprites/env/Props.png" id="1_wqxgn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8alnm"]
+atlas = ExtResource("1_wqxgn")
+region = Rect2(240, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8thoe"]
+atlas = ExtResource("1_wqxgn")
+region = Rect2(176, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqule"]
+atlas = ExtResource("1_wqxgn")
+region = Rect2(192, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dudho"]
+atlas = ExtResource("1_wqxgn")
+region = Rect2(208, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxoff"]
+atlas = ExtResource("1_wqxgn")
+region = Rect2(224, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pq1f2"]
+atlas = ExtResource("1_wqxgn")
+region = Rect2(240, 160, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r3ihy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8alnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8thoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqule")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dudho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxoff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pq1f2")
+}],
+"loop": 0,
+"name": &"bounce",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqxgn"]
+size = Vector2(12, 15)
+
+[node name="Trampoline" type="Area2D" unique_id=532741071]
+script = ExtResource("1_8thoe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=753511439]
+sprite_frames = SubResource("SpriteFrames_r3ihy")
+animation = &"bounce"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1183543849]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_wqxgn")
+debug_color = Color(0.6940736, 0.3300258, 0.92020094, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
