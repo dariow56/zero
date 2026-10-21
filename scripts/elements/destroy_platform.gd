@@ -1,4 +1,4 @@
-class_name SingleUsePlatform extends StaticBody2D
+class_name DestroyPlatform extends StaticBody2D
 
 
 #region /// Ready Variables

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://wlc1q1j6u65"]
 
-[ext_resource type="Script" uid="uid://cano1387nc8f3" path="res://scripts/elements/single_use_platform.gd" id="1_uitvc"]
-[ext_resource type="Texture2D" uid="uid://5vyj1nfupubl" path="res://sprites/env/ground.png" id="1_xn33u"]
+[ext_resource type="Script" uid="uid://cano1387nc8f3" path="res://scripts/elements/destroy_platform.gd" id="1_uitvc"]
+[ext_resource type="Texture2D" uid="uid://5vyj1nfupubl" path="res://sprites/elements/ground.png" id="1_xn33u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4opm4"]
 size = Vector2(16, 9)
@@ -9,7 +9,8 @@ size = Vector2(16, 9)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xn33u"]
 size = Vector2(15, 1)
 
-[node name="SingleUsePlatform" type="StaticBody2D" unique_id=1534117499]
+[node name="DestroyPlatform" type="StaticBody2D" unique_id=1534117499]
+collision_mask = 2
 script = ExtResource("1_uitvc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1653482768]
@@ -22,6 +23,7 @@ region_enabled = true
 region_rect = Rect2(128, 64, 16, 9)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1490666981]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=484227559]
 position = Vector2(0, -5)

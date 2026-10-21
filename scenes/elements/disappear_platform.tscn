@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cevsen4v3yxq7"]
 
 [ext_resource type="Script" uid="uid://1xvilqapbe1j" path="res://scripts/elements/disappearing_platform.gd" id="1_c5br5"]
-[ext_resource type="Texture2D" uid="uid://5vyj1nfupubl" path="res://sprites/env/ground.png" id="2_66djo"]
+[ext_resource type="Texture2D" uid="uid://5vyj1nfupubl" path="res://sprites/elements/ground.png" id="2_66djo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3ihy"]
 size = Vector2(16, 8)
@@ -10,6 +10,7 @@ size = Vector2(16, 8)
 size = Vector2(16, 2)
 
 [node name="DisappearingPlatform" type="AnimatableBody2D" unique_id=1416536972]
+collision_mask = 2
 script = ExtResource("1_c5br5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1831130003]
@@ -23,6 +24,7 @@ shape = SubResource("RectangleShape2D_r3ihy")
 one_way_collision = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=413116650]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=997609150]
 position = Vector2(0, -9)

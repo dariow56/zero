@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5vyj1nfupubl"
-path="res://.godot/imported/ground.png-89bb946f3992726ae545aea0912651fa.ctex"
+uid="uid://bq0wkiymqryd"
+path="res://.godot/imported/gold-n-blue-mini-pallet.png-f49d5798cbdcb7f16e2b208383b581ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/env/ground.png"
-dest_files=["res://.godot/imported/ground.png-89bb946f3992726ae545aea0912651fa.ctex"]
+source_file="res://sprites/elements/gold-n-blue-mini-pallet.png"
+dest_files=["res://.godot/imported/gold-n-blue-mini-pallet.png-f49d5798cbdcb7f16e2b208383b581ce.ctex"]
 
 [params]
 

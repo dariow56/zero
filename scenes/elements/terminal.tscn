@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cfwm1cmdunyib"]
+
+[ext_resource type="Texture2D" uid="uid://cikoh3a835gfw" path="res://sprites/elements/props.png" id="1_s767p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06bqy"]
+size = Vector2(12, 13)
+
+[node name="Terminal" type="Area2D" unique_id=2036861615]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1783344053]
+texture = ExtResource("1_s767p")
+region_enabled = true
+region_rect = Rect2(48, 112, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1559441878]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_06bqy")
+debug_color = Color(0.8630928, 0.31994748, 0.433345, 0.41960785)

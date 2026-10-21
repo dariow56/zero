@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://h11lupj28kfv"]
+
+[ext_resource type="Texture2D" uid="uid://cikoh3a835gfw" path="res://sprites/elements/props.png" id="1_lgaya"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7sd1"]
+atlas = ExtResource("1_lgaya")
+region = Rect2(112, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26jdw"]
+atlas = ExtResource("1_lgaya")
+region = Rect2(48, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7v42"]
+atlas = ExtResource("1_lgaya")
+region = Rect2(64, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkewa"]
+atlas = ExtResource("1_lgaya")
+region = Rect2(80, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qesf"]
+atlas = ExtResource("1_lgaya")
+region = Rect2(96, 128, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r3ihy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7sd1")
+}],
+"loop": 1,
+"name": &"lock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26jdw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7v42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkewa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qesf")
+}],
+"loop": 1,
+"name": &"unlock",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvt73"]
+size = Vector2(7, 6)
+
+[node name="CyberLock" type="Area2D" unique_id=1257054870]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1228813722]
+sprite_frames = SubResource("SpriteFrames_r3ihy")
+animation = &"lock"
+autoplay = "lock"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=344803474]
+position = Vector2(3.5, 5)
+shape = SubResource("RectangleShape2D_lvt73")
+debug_color = Color(0.8550005, 0.33128986, 0.4282575, 0.41960785)

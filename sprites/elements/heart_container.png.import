@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bq0wkiymqryd"
-path="res://.godot/imported/gold-n-blue-mini-pallet.png-21da8284154f92f4a8ffff190783aef3.ctex"
+uid="uid://e1x7wdeev2e"
+path="res://.godot/imported/heart_container.png-57cacca053577c4da3b19092da911e69.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/env/gold-n-blue-mini-pallet.png"
-dest_files=["res://.godot/imported/gold-n-blue-mini-pallet.png-21da8284154f92f4a8ffff190783aef3.ctex"]
+source_file="res://sprites/elements/heart_container.png"
+dest_files=["res://.godot/imported/heart_container.png-57cacca053577c4da3b19092da911e69.ctex"]
 
 [params]
 
