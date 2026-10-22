@@ -3,6 +3,18 @@
 [ext_resource type="Texture2D" uid="uid://dreniv0kf6006" path="res://sprites/player/Player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c564q46qywjil" path="res://scripts/player/player.gd" id="1_dovo2"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_myrg7"]
+atlas = ExtResource("1_8afob")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvlxm"]
+atlas = ExtResource("1_8afob")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf5tr"]
+atlas = ExtResource("1_8afob")
+region = Rect2(64, 128, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_dovo2"]
 atlas = ExtResource("1_8afob")
 region = Rect2(96, 64, 32, 32)
@@ -22,14 +34,6 @@ region = Rect2(32, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_75vfm"]
 atlas = ExtResource("1_8afob")
 region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0owmy"]
-atlas = ExtResource("1_8afob")
-region = Rect2(0, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qek5x"]
-atlas = ExtResource("1_8afob")
-region = Rect2(32, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5gtgg"]
 atlas = ExtResource("1_8afob")
@@ -63,6 +67,20 @@ region = Rect2(160, 32, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_myrg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvlxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf5tr")
+}],
+"loop": 0,
+"name": &"climb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_dovo2")
 }, {
 "duration": 1.0,
@@ -87,12 +105,6 @@ animations = [{
 "speed": 10.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0owmy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qek5x")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5gtgg")
 }],
@@ -135,11 +147,15 @@ script = ExtResource("1_dovo2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=675687901]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_r3ihy")
-animation = &"idle"
+animation = &"climb"
 autoplay = "idle"
-frame = 1
-frame_progress = 0.58025503
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=632899858]
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_r3ihy")
+
+[node name="ClimbRayCast2D" type="RayCast2D" parent="." unique_id=1373798666]
+position = Vector2(0, -8)
+target_position = Vector2(0, -3)
+collision_mask = 4
+hit_from_inside = true
