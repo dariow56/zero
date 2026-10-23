@@ -1,4 +1,4 @@
-extends Path2D
+class_name MovingPlatform extends Path2D
 
 
 @export var loop = true

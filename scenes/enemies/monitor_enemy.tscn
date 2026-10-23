@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://cqbeeq6p5ohvj"]
+
+[ext_resource type="Texture2D" uid="uid://dnjc5ay8y8r6c" path="res://sprites/enemies/Monitor.png" id="1_bp6v6"]
+[ext_resource type="Script" uid="uid://doq0epi7jcp1a" path="res://scripts/enemies/monitor_enemy.gd" id="1_byi4s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byi4s"]
+atlas = ExtResource("1_bp6v6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lfpe"]
+atlas = ExtResource("1_bp6v6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7q3v1"]
+atlas = ExtResource("1_bp6v6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hi4b0"]
+atlas = ExtResource("1_bp6v6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r3ihy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byi4s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lfpe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7q3v1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hi4b0")
+}],
+"loop": 1,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3ihy"]
+size = Vector2(8, 9)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_byi4s"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(2, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 60.0
+initial_velocity_min = 10.0
+initial_velocity_max = 25.0
+gravity = Vector3(0, -2, 0)
+scale_max = 2.0
+
+[node name="MonitorEnemy" type="CharacterBody2D" unique_id=1543937080]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_byi4s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=50486368]
+sprite_frames = SubResource("SpriteFrames_r3ihy")
+animation = &"fly"
+autoplay = "fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=284890410]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_r3ihy")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=149618944]
+target_position = Vector2(0, 100)
+collision_mask = 3
+collide_with_areas = true
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1865895075]
+width = 0.8
+begin_cap_mode = 1
+end_cap_mode = 1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=786358037]
+amount = 5
+lifetime = 0.8
+process_material = SubResource("ParticleProcessMaterial_byi4s")

@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name VirusEnemy extends CharacterBody2D
 
 
 #region /// Ready Variables
