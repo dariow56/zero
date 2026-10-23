@@ -1,13 +1,23 @@
 class_name MonitorEnemy extends CharacterBody2D
 
+
+#region /// Ready Variables
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var lazer_cast: RayCast2D = $RayCast2D
 @onready var line_2d: Line2D = $Line2D
 @onready var particles: GPUParticles2D = $GPUParticles2D
+#endregion
 
+
+#region /// Constants
 const SPEED = 50.0
+#endregion
 
+
+#region /// Variables
 var direction: int = -1
+#endregion
+
 
 func _ready() -> void:
 	line_2d.clear_points()
@@ -23,14 +33,14 @@ func _physics_process(_delta: float) -> void:
 		var collider = lazer_cast.get_collider()
 		if collider and collider.has_method("die"):
 			collider.die()
-
-	# 1. Actualizamos el láser visual hasta el suelo
+	
+	# Update the visual lazer to the ground.
 	line_2d.set_point_position(1, end_point)
 
-	# 2. Posicionamos las partículas únicamente en el punto de impacto exacto
+	# Add particles on the impact point.
 	particles.position = end_point
 	
-	# 3. Activamos las partículas solo cuando el rayo colisione
+	# Activate the particles when the lazer is collide.
 	particles.emitting = lazer_cast.is_colliding()
 
 	if not lazer_cast.is_colliding():

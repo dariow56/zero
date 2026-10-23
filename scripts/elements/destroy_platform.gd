@@ -20,13 +20,13 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	time += 1
-	$Sprite2D.position += Vector2(0, sin(time)*0.5)
+	sprite.position += Vector2(0, sin(time)*0.5)
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == 'Player':
 		set_process(true)
-		$Timer.start(0.7)
+		timer.start(0.7)
 
 
 
