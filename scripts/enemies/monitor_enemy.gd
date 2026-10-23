@@ -31,8 +31,8 @@ func _physics_process(_delta: float) -> void:
 		end_point = to_local(lazer_cast.get_collision_point())
 		
 		var collider = lazer_cast.get_collider()
-		if collider and collider.has_method("die"):
-			collider.die()
+		if collider and collider.has_method("get_damage"):
+			collider.get_damage()
 	
 	# Update the visual lazer to the ground.
 	line_2d.set_point_position(1, end_point)

@@ -19,7 +19,6 @@ var is_climbing: bool = false
 #endregion
 
 
-
 func _physics_process(delta: float) -> void:
 	# Check the RayCast2D if is rear a grid or not.
 	var climbable = climb_raycast.get_collider()
@@ -105,3 +104,6 @@ func update_animations() -> void:
 				animated_sprite.play("run")
 			else:
 				animated_sprite.play("idle")
+
+func get_damage() -> void:
+	animated_sprite.play("damage")
