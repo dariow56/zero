@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://d4b1u52w12rdu" path="res://scripts/player/fall_state.gd" id="6_75vfm"]
 [ext_resource type="Script" uid="uid://btoegm2sf7w7q" path="res://scripts/player/jump_state.gd" id="6_qek5x"]
 [ext_resource type="Script" uid="uid://l3tjrmjdn3pk" path="res://scripts/player/climb_state.gd" id="8_5gtgg"]
+[ext_resource type="Script" uid="uid://caqvd7w1t6bu5" path="res://scripts/player/damage_state.gd" id="9_5gtgg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_myrg7"]
 atlas = ExtResource("1_8afob")
@@ -121,9 +122,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3j4b4")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"damage",
-"speed": 20.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -195,6 +196,8 @@ position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_r3ihy")
 animation = &"idle"
 autoplay = "idle"
+frame = 1
+frame_progress = 0.5047482
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=632899858]
 position = Vector2(0, -8)
@@ -224,3 +227,6 @@ script = ExtResource("6_75vfm")
 
 [node name="ClimbState" type="Node" parent="StateMachine" unique_id=988476923]
 script = ExtResource("8_5gtgg")
+
+[node name="DamageState" type="Node" parent="StateMachine" unique_id=1167885445]
+script = ExtResource("9_5gtgg")

@@ -861,7 +861,7 @@ point_count = 5
 
 [node name="Player" parent="." unique_id=1574617212 instance=ExtResource("1_62it3")]
 z_index = 1
-position = Vector2(976, 272)
+position = Vector2(1088, 128)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=314845688]
 position = Vector2(0, -48)
