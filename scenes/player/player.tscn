@@ -2,6 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://dreniv0kf6006" path="res://sprites/player/Player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c564q46qywjil" path="res://scripts/player/player.gd" id="1_dovo2"]
+[ext_resource type="Script" uid="uid://balidh1re0k1r" path="res://scripts/states/state_machine.gd" id="3_lvxji"]
+[ext_resource type="Script" uid="uid://83s7iadfx1ik" path="res://scripts/player/idle_state.gd" id="4_p47bc"]
+[ext_resource type="Script" uid="uid://brq33xg0eixxh" path="res://scripts/player/run_state.gd" id="5_p47bc"]
+[ext_resource type="Script" uid="uid://d4b1u52w12rdu" path="res://scripts/player/fall_state.gd" id="6_75vfm"]
+[ext_resource type="Script" uid="uid://btoegm2sf7w7q" path="res://scripts/player/jump_state.gd" id="6_qek5x"]
+[ext_resource type="Script" uid="uid://l3tjrmjdn3pk" path="res://scripts/player/climb_state.gd" id="8_5gtgg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_myrg7"]
 atlas = ExtResource("1_8afob")
@@ -187,9 +193,8 @@ script = ExtResource("1_dovo2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=675687901]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_r3ihy")
-animation = &"damage"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.60653055
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=632899858]
 position = Vector2(0, -8)
@@ -200,3 +205,22 @@ position = Vector2(0, -8)
 target_position = Vector2(0, -3)
 collision_mask = 4
 hit_from_inside = true
+
+[node name="StateMachine" type="Node" parent="." unique_id=816894395 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_lvxji")
+initial_state = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=684104761]
+script = ExtResource("4_p47bc")
+
+[node name="RunState" type="Node" parent="StateMachine" unique_id=59361529]
+script = ExtResource("5_p47bc")
+
+[node name="JumpState" type="Node" parent="StateMachine" unique_id=1135956345]
+script = ExtResource("6_qek5x")
+
+[node name="FallState" type="Node" parent="StateMachine" unique_id=99260057]
+script = ExtResource("6_75vfm")
+
+[node name="ClimbState" type="Node" parent="StateMachine" unique_id=988476923]
+script = ExtResource("8_5gtgg")
