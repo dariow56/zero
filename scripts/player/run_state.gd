@@ -7,32 +7,24 @@ func enter() -> void:
 
 func physics_update(delta: float) -> void:
 	# Fall state
-	if not player.is_on_floor():
-		player.velocity += player.get_gravity() * delta
-		state_machine.change_state("FallState")
+	if player.check_fall_state(delta):
 		return
 
 	# Climb state.
-	var climbable = player.climb_raycast.get_collider()
-	var direction_y = Input.get_axis("ui_up", "ui_down")
-	if climbable and direction_y != 0:
-		state_machine.change_state("ClimbState")
+	if player.check_climb_state():
 		return
 
 	# Jump state.
-	if Input.is_action_just_pressed("ui_accept") and player.is_on_floor():
-		state_machine.change_state("JumpState")
+	if player.check_jump_state():
 		return
-	
+
 	# Idle state.
-	var direction_x = Input.get_axis("ui_left", "ui_right")
-	if direction_x == 0:
-		state_machine.change_state("IdleState")
+	if player.check_idle_state():
 		return
 	
 	# Add player speed.
-	player.velocity.x = direction_x * player.SPEED
+	player.velocity.x = player.direction.x * player.SPEED
 	if player.animated_sprite:
-		player.animated_sprite.flip_h = direction_x < 0
+		player.animated_sprite.flip_h = player.direction.x < 0
 
 	player.move_and_slide()
