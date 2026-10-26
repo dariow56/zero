@@ -24,6 +24,7 @@ func _ready() -> void:
 	line_2d.add_point(Vector2.ZERO)
 	line_2d.add_point(Vector2.ZERO)
 
+
 func _physics_process(_delta: float) -> void:
 	var end_point: Vector2 = lazer_cast.target_position
 
@@ -56,6 +57,13 @@ func flip_direction() -> void:
 	direction *= -1
 	update_orientation()
 
+
 func update_orientation() -> void:
 	# Flip the sprite
 	animated_sprite.flip_h = (direction < 0)
+
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	# Check if the colliding body has a method get damage.
+	if body.has_method("get_damage"):
+		body.get_damage()

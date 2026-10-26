@@ -861,7 +861,7 @@ point_count = 5
 
 [node name="Player" parent="." unique_id=1574617212 instance=ExtResource("1_62it3")]
 z_index = 1
-position = Vector2(1088, 128)
+position = Vector2(1088, 272)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=314845688]
 position = Vector2(0, -48)
@@ -983,7 +983,7 @@ position = Vector2(8, 72)
 [node name="Enemies" type="Node2D" parent="." unique_id=844468300]
 
 [node name="VirusEnemy" parent="Enemies" unique_id=1780979011 instance=ExtResource("14_vmfr1")]
-position = Vector2(1344, 240)
+position = Vector2(1272, 272)
 
 [node name="MonitorEnemy" parent="Enemies" unique_id=1543937080 instance=ExtResource("15_2li26")]
 position = Vector2(944, 62)

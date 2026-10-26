@@ -92,4 +92,5 @@ func air_movement() -> void:
 
 
 func get_damage() -> void:
+	print("Get damage +1")
 	state_machine.change_state("DamageState")

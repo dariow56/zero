@@ -80,11 +80,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvt73"]
+size = Vector2(6, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3ihy"]
 size = Vector2(6, 13)
 
 [node name="VirusEnemy" type="CharacterBody2D" unique_id=1034981611]
 collision_layer = 8
-collision_mask = 3
 script = ExtResource("1_7624n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2040989177]
@@ -94,7 +96,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2011714433]
-position = Vector2(0, -6.5)
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_lvt73")
 
 [node name="WallChecker" type="RayCast2D" parent="." unique_id=2176540]
@@ -104,3 +106,14 @@ target_position = Vector2(12, 0)
 [node name="LedgeChecker" type="RayCast2D" parent="." unique_id=563318760]
 position = Vector2(5, 0)
 target_position = Vector2(0, 10)
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1964654792]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=455349662]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_r3ihy")
+debug_color = Color(0.808971, 0.37878773, 0.44601524, 0.41960785)
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

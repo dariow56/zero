@@ -12,7 +12,11 @@ func physics_update(delta: float) -> void:
 		actor.add_gravity(delta)
 		actor.move_and_slide()
 	
-	# Fall state
+	# Wait until animation is finished.
+	if actor.animated_sprite.is_playing() and actor.animated_sprite.animation == "damage":
+		return
+
+	# Fall state.
 	if actor.check_fall_state(delta):
 		return
 

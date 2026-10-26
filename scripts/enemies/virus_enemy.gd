@@ -7,17 +7,20 @@ class_name VirusEnemy extends CharacterBody2D
 @onready var ledge_checker: RayCast2D = $LedgeChecker
 #endregion
 
+
 #region /// Constants
 const SPEED = 50.0
-const WAIT = 1.8
 #endregion
+
 
 #region /// Variables
 var direction: int = -1
 #endregion
 
+
 func _ready() -> void:
 	update_orientation()
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -39,6 +42,7 @@ func flip_direction() -> void:
 	direction *= -1
 	update_orientation()
 
+
 func update_orientation() -> void:
 	# Flip the sprite
 	animated_sprite.flip_h = (direction < 0)
@@ -48,3 +52,9 @@ func update_orientation() -> void:
 	wall_checker.position.x = 3.0 * direction
 	ledge_checker.position.x = 5.0 * direction
 
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	# Check if the colliding body has a method get damage.
+	if body.has_method("get_damage"):
+		body.get_damage()
+		flip_direction()

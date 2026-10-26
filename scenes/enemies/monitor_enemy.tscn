@@ -53,9 +53,11 @@ initial_velocity_max = 25.0
 gravity = Vector3(0, -2, 0)
 scale_max = 2.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvt73"]
+size = Vector2(8, 9)
+
 [node name="MonitorEnemy" type="CharacterBody2D" unique_id=1543937080]
 collision_layer = 8
-collision_mask = 3
 script = ExtResource("1_byi4s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=50486368]
@@ -82,3 +84,14 @@ end_cap_mode = 1
 amount = 5
 lifetime = 0.8
 process_material = SubResource("ParticleProcessMaterial_byi4s")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=965463358]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1886305351]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_lvt73")
+debug_color = Color(0.8402721, 0.36216742, 0.34490323, 0.41960785)
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
