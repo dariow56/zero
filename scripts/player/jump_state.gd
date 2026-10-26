@@ -8,6 +8,9 @@ func enter() -> void:
 	# Add vertical impulse.
 	actor.velocity.y = actor.JUMP_VELOCITY
 
+	# Add jump dust when jump.
+	DustManager.spawn_dust(actor.global_position + Vector2(0, -8), actor.animated_sprite.flip_h, "jump_dust")
+
 
 func physics_update(delta: float) -> void:
 	# Add gravity.

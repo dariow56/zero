@@ -4,6 +4,7 @@ func enter() -> void:
 	if actor.animated_sprite:
 		actor.animated_sprite.play("run")
 	
+	DustManager.spawn_dust(actor.global_position + Vector2(0, -8), actor.animated_sprite.flip_h, "run_dust")
 
 func physics_update(delta: float) -> void:
 	# Fall state
@@ -24,6 +25,7 @@ func physics_update(delta: float) -> void:
 	
 	# Add actor speed.
 	actor.velocity.x = actor.direction.x * actor.SPEED
+
 	if actor.animated_sprite:
 		actor.animated_sprite.flip_h = actor.direction.x < 0
 

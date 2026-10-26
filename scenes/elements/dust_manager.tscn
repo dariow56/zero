@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c4lf1bkn65ena"]
+
+[ext_resource type="Script" uid="uid://hl2nnp8meltt" path="res://scripts/globals/dust_pool.gd" id="1_k5uyn"]
+[ext_resource type="PackedScene" uid="uid://derjiad4582pj" path="res://scenes/elements/dust_effect.tscn" id="2_v3ybh"]
+
+[node name="DustPool" type="Node" unique_id=2033421662]
+script = ExtResource("1_k5uyn")
+dust_scene = ExtResource("2_v3ybh")
