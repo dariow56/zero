@@ -2,13 +2,13 @@ class_name ClimbState extends State
 
 
 func enter() -> void:
-	if player.animated_sprite:
-		player.animated_sprite.play("climb")
+	if actor.animated_sprite:
+		actor.animated_sprite.play("climb")
 
  
 func physics_update(_delta: float) -> void:
 	# Check if the Raycast is colliding.
-	if not player.climbable:
+	if not actor.climbable:
 		state_machine.change_state("FallState")
 		return
 
@@ -18,11 +18,11 @@ func physics_update(_delta: float) -> void:
 		return
 
 	# Add climb speed.
-	if player.direction != Vector2.ZERO:
-		player.velocity = player.direction * player.CLIMB_SPEED
-		player.animated_sprite.play("climb")
+	if actor.direction != Vector2.ZERO:
+		actor.velocity = actor.direction * actor.CLIMB_SPEED
+		actor.animated_sprite.play("climb")
 	else:
-		player.velocity = Vector2.ZERO
-		player.animated_sprite.pause()
+		actor.velocity = Vector2.ZERO
+		actor.animated_sprite.pause()
 
-	player.move_and_slide()
+	actor.move_and_slide()

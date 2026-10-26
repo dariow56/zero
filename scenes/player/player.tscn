@@ -209,9 +209,10 @@ target_position = Vector2(0, -3)
 collision_mask = 4
 hit_from_inside = true
 
-[node name="StateMachine" type="Node" parent="." unique_id=816894395 node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=816894395 node_paths=PackedStringArray("initial_state", "actor")]
 script = ExtResource("3_lvxji")
 initial_state = NodePath("IdleState")
+actor = NodePath("..")
 
 [node name="IdleState" type="Node" parent="StateMachine" unique_id=684104761]
 script = ExtResource("4_p47bc")

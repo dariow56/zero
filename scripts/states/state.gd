@@ -2,9 +2,14 @@
 class_name State extends Node
 
 
-# Player reference.
-var player: CharacterBody2D
+#region /// Export Variables
+@export var actor: CharacterBody2D
+#endregion 
+
+
+#region /// Actor reference
 var state_machine: StateMachine
+#endregion
 
 
 # It executes upon entering the state.
