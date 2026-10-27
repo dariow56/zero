@@ -2,8 +2,13 @@ class_name DamageState extends State
 
 
 func enter() -> void:
+	# Play the animation.
 	if actor.animated_sprite:
 		actor.animated_sprite.play("damage")
+
+	# Shake the camera.
+	if actor.camera and actor.camera.has_method("shake"):
+		actor.camera.shake()
 
 
 func physics_update(delta: float) -> void:

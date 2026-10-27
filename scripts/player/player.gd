@@ -11,6 +11,7 @@ class_name Player extends CharacterBody2D
 #region /// Variables
 var direction: Vector2 = Vector2.ZERO
 var climbable
+var camera
 #endregion
 
 
@@ -31,7 +32,7 @@ func _physics_process(delta: float) -> void:
 
 	# Check the RayCast2D if is near a grid or not.
 	climbable = climb_raycast.get_collider()
-	
+	camera = get_viewport().get_camera_2d()
 	# Initialize the state machine physics update
 	state_machine.physics_update(delta)	
 
@@ -92,5 +93,4 @@ func air_movement() -> void:
 
 
 func get_damage() -> void:
-	print("Get damage +1")
 	state_machine.change_state("DamageState")

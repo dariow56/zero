@@ -2,17 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://itifovkwws3d" path="res://scenes/player/player.tscn" id="1_62it3"]
 [ext_resource type="Texture2D" uid="uid://5vyj1nfupubl" path="res://sprites/elements/ground.png" id="2_n6048"]
+[ext_resource type="PackedScene" uid="uid://drktqxm85lvwq" path="res://scenes/elements/camera_2d.tscn" id="2_vmfr1"]
 [ext_resource type="PackedScene" uid="uid://cevsen4v3yxq7" path="res://scenes/elements/disappear_platform.tscn" id="3_63r6y"]
 [ext_resource type="Texture2D" uid="uid://cikoh3a835gfw" path="res://sprites/elements/props.png" id="3_o8weq"]
 [ext_resource type="PackedScene" uid="uid://tyvi83ego6ui" path="res://scenes/elements/activator.tscn" id="4_0qlaq"]
 [ext_resource type="PackedScene" uid="uid://str6ucvocklu" path="res://scenes/elements/moving_platform.tscn" id="4_c53nr"]
 [ext_resource type="PackedScene" uid="uid://cfwm1cmdunyib" path="res://scenes/elements/terminal.tscn" id="4_dlivn"]
-[ext_resource type="PackedScene" uid="uid://6nus6fdtc7ca" path="res://scenes/elements/tutorial.tscn" id="5_p5pig"]
 [ext_resource type="PackedScene" uid="uid://wlc1q1j6u65" path="res://scenes/elements/destroy_platform.tscn" id="5_y4d5c"]
 [ext_resource type="PackedScene" uid="uid://dw2y2xfoinxud" path="res://scenes/elements/trampoline.tscn" id="7_i1gjs"]
 [ext_resource type="PackedScene" uid="uid://cmwvvf5i3ebav" path="res://scenes/elements/heart_container.tscn" id="8_kgnh5"]
 [ext_resource type="PackedScene" uid="uid://7if6yum2dugy" path="res://scenes/elements/kill_zone.tscn" id="9_x0rm7"]
-[ext_resource type="PackedScene" uid="uid://h11lupj28kfv" path="res://scenes/elements/cyber_lock.tscn" id="11_p5pig"]
 [ext_resource type="PackedScene" uid="uid://6ib67aq857xq" path="res://scenes/enemies/virus_enemy.tscn" id="14_vmfr1"]
 [ext_resource type="PackedScene" uid="uid://cqbeeq6p5ohvj" path="res://scenes/enemies/monitor_enemy.tscn" id="15_2li26"]
 
@@ -833,7 +832,7 @@ sources/0 = SubResource("TileSetAtlasSource_c53nr")
 
 [sub_resource type="Curve2D" id="Curve2D_c53nr"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 160, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 152, 0)
 }
 point_count = 2
 
@@ -861,12 +860,11 @@ point_count = 5
 
 [node name="Player" parent="." unique_id=1574617212 instance=ExtResource("1_62it3")]
 z_index = 1
-position = Vector2(1088, 272)
+position = Vector2(-328, 48)
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=314845688]
-position = Vector2(0, -48)
-zoom = Vector2(1.5, 1.5)
-position_smoothing_enabled = true
+[node name="Camera2D" parent="Player" unique_id=1991796323 instance=ExtResource("2_vmfr1")]
+position = Vector2(0, -24)
+random_strength = 2.0
 
 [node name="Map" type="Node2D" parent="." unique_id=794220570]
 
@@ -884,6 +882,7 @@ tile_set = SubResource("TileSet_n6048")
 position = Vector2(-224, 56)
 curve = SubResource("Curve2D_c53nr")
 loop = false
+speed = 4.0
 
 [node name="MovingPlatform2" parent="Platforms" unique_id=1797947268 instance=ExtResource("4_c53nr")]
 position = Vector2(184, 208)
@@ -958,24 +957,21 @@ position = Vector2(8, 264)
 [node name="Trampoline2" parent="Traps" unique_id=971782958 instance=ExtResource("7_i1gjs")]
 position = Vector2(1360, 152)
 
-[node name="Collectables" type="Node2D" parent="." unique_id=1378316720]
+[node name="Collectibles" type="Node2D" parent="." unique_id=1378316720]
 
-[node name="HeartContainer" parent="Collectables" unique_id=878051227 instance=ExtResource("8_kgnh5")]
+[node name="HeartContainer" parent="Collectibles" unique_id=878051227 instance=ExtResource("8_kgnh5")]
 position = Vector2(736, 280)
 
-[node name="HeartContainer2" parent="Collectables" unique_id=2069893040 instance=ExtResource("8_kgnh5")]
+[node name="HeartContainer2" parent="Collectibles" unique_id=2069893040 instance=ExtResource("8_kgnh5")]
 position = Vector2(248, -8)
 
-[node name="HeartContainer3" parent="Collectables" unique_id=486250355 instance=ExtResource("8_kgnh5")]
+[node name="HeartContainer3" parent="Collectibles" unique_id=486250355 instance=ExtResource("8_kgnh5")]
 position = Vector2(-168, 248)
 
+[node name="HeartContainer4" parent="Collectibles" unique_id=194929560 instance=ExtResource("8_kgnh5")]
+position = Vector2(-280, 40)
+
 [node name="Items" type="Node2D" parent="." unique_id=1555495261]
-
-[node name="Tutorial" parent="Items" unique_id=1276473012 instance=ExtResource("5_p5pig")]
-position = Vector2(-296, 40)
-
-[node name="CyberLock" parent="Items" unique_id=1257054870 instance=ExtResource("11_p5pig")]
-position = Vector2(536, 264)
 
 [node name="Terminal" parent="Items" unique_id=2036861615 instance=ExtResource("4_dlivn")]
 position = Vector2(520, 264)

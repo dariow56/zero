@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://btoegm2sf7w7q" path="res://scripts/player/jump_state.gd" id="6_qek5x"]
 [ext_resource type="Script" uid="uid://l3tjrmjdn3pk" path="res://scripts/player/climb_state.gd" id="8_5gtgg"]
 [ext_resource type="Script" uid="uid://caqvd7w1t6bu5" path="res://scripts/player/damage_state.gd" id="9_5gtgg"]
+[ext_resource type="Script" uid="uid://0wcejhiymw7c" path="res://scripts/player/power_state.gd" id="10_h17s1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_myrg7"]
 atlas = ExtResource("1_8afob")
@@ -49,6 +50,18 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_5gtgg"]
 atlas = ExtResource("1_8afob")
 region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgqa7"]
+atlas = ExtResource("1_8afob")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ydkj"]
+atlas = ExtResource("1_8afob")
+region = Rect2(96, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3j4b4"]
+atlas = ExtResource("1_8afob")
+region = Rect2(0, 224, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h17s1"]
 atlas = ExtResource("1_8afob")
@@ -133,6 +146,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_lgqa7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ydkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3j4b4")
+}],
+"loop": 0,
+"name": &"powerup",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_h17s1")
 }, {
 "duration": 1.0,
@@ -166,10 +193,11 @@ script = ExtResource("1_dovo2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=675687901]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_r3ihy")
-animation = &"idle"
+animation = &"powerup"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=632899858]
+visible = false
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_r3ihy")
 
@@ -200,3 +228,6 @@ script = ExtResource("8_5gtgg")
 
 [node name="DamageState" type="Node" parent="StateMachine" unique_id=1167885445]
 script = ExtResource("9_5gtgg")
+
+[node name="PowerState" type="Node" parent="StateMachine" unique_id=1382167318]
+script = ExtResource("10_h17s1")
