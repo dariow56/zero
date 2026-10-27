@@ -1,4 +1,4 @@
-class_name IdleState extends State
+class_name PlayerIdleState extends State
 
 
 func enter() -> void:
@@ -23,6 +23,10 @@ func physics_update(delta: float) -> void:
 	if actor.check_run_state():
 		return
 	
+	# Crouch state.
+	if actor.check_crouch_state():
+		return
+
 	# Smooth braking on the ground.
 	actor.velocity.x = move_toward(actor.velocity.x, 0, actor.SPEED)
 	actor.move_and_slide()

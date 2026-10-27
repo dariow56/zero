@@ -1,4 +1,4 @@
-class_name FallState extends State
+class_name PlayerFallState extends State
 
 
 func enter() -> void:

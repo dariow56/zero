@@ -121,12 +121,12 @@ debug_color = Color(0.808971, 0.37878773, 0.44601524, 0.41960785)
 
 [node name="StateMachine" type="Node" parent="." unique_id=1202089766 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_8kro7")
-initial_state = NodePath("VirusPatrolState")
+initial_state = NodePath("PatrolState")
 
-[node name="VirusIdleState" type="Node" parent="StateMachine" unique_id=1309829657]
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=1309829657]
 script = ExtResource("4_w0726")
 
-[node name="VirusPatrolState" type="Node" parent="StateMachine" unique_id=29757653]
+[node name="PatrolState" type="Node" parent="StateMachine" unique_id=29757653]
 script = ExtResource("5_a56c6")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

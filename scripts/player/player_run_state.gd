@@ -1,4 +1,4 @@
-class_name RunState extends State
+class_name PlayerRunState extends State
 
 func enter() -> void:
 	if actor.animated_sprite:
@@ -23,6 +23,10 @@ func physics_update(delta: float) -> void:
 	if actor.check_idle_state():
 		return
 	
+	# Crouch state.
+	if actor.check_crouch_state():
+		return
+
 	# Add actor speed.
 	actor.velocity.x = actor.direction.x * actor.SPEED
 

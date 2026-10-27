@@ -5,6 +5,8 @@ class_name Player extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var climb_raycast: RayCast2D = $ClimbRayCast2D
 @onready var state_machine: StateMachine = $StateMachine
+@onready var stand_collision: CollisionShape2D = $StandCollision
+@onready var crouch_collision: CollisionShape2D = $CrouchCollision
 #endregion
 
 
@@ -19,6 +21,7 @@ var camera
 const SPEED = 120.0
 const JUMP_VELOCITY = -320.0
 const CLIMB_SPEED = 70.0
+const CROUCH_SPEED = 60.0
 #endregion
 
 
@@ -76,6 +79,13 @@ func check_idle_state() -> bool:
 	return false
 
 
+func check_crouch_state() -> bool:
+	if direction.y > 0 and is_on_floor():
+		state_machine.change_state("CrouchState")
+		return true
+	return false
+
+
 # Player methods
 func add_gravity(delta: float) -> void:
 	velocity.y += get_gravity().y * delta
@@ -90,6 +100,23 @@ func air_movement() -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+
+func crouch_movement(dir: float) -> void:
+	if dir != 0:
+		velocity.x = dir * CROUCH_SPEED
+		if animated_sprite:
+			animated_sprite.flip_h = (dir < 0)
+		else:
+			velocity.x = move_toward(velocity.x, 0, CROUCH_SPEED)
+
+		move_and_slide()
+
+
+func set_crouch_collision(is_crouching: bool) -> void:
+	if stand_collision and crouch_collision:
+		stand_collision.disabled = is_crouching
+		crouch_collision.disabled = not is_crouching
 
 
 func get_damage() -> void:

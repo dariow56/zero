@@ -97,9 +97,9 @@ debug_color = Color(0.8402721, 0.36216742, 0.34490323, 0.41960785)
 
 [node name="StateMachine" type="Node" parent="." unique_id=1771967459 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_7q3v1")
-initial_state = NodePath("MonitorScanState")
+initial_state = NodePath("ScanState")
 
-[node name="MonitorScanState" type="Node" parent="StateMachine" unique_id=749934557]
+[node name="ScanState" type="Node" parent="StateMachine" unique_id=749934557]
 script = ExtResource("4_hi4b0")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

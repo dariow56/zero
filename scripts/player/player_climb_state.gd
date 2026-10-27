@@ -1,4 +1,4 @@
-class_name ClimbState extends State
+class_name PlayerClimbState extends State
 
 
 func enter() -> void:

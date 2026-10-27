@@ -1,4 +1,4 @@
-class_name JumpState extends State
+class_name PlayerJumpState extends State
 
 
 func enter() -> void:

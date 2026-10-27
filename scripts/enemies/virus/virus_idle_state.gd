@@ -25,4 +25,4 @@ func physics_update(delta: float) -> void:
 
 	# Transición al estado de patrulla tras cumplir el tiempo
 	if elapsed_time >= idle_time:
-		state_machine.change_state("VirusPatrolState")
+		state_machine.change_state("PatrolState")

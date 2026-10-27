@@ -3,13 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://dreniv0kf6006" path="res://sprites/player/Player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://c564q46qywjil" path="res://scripts/player/player.gd" id="1_dovo2"]
 [ext_resource type="Script" uid="uid://balidh1re0k1r" path="res://scripts/states/state_machine.gd" id="3_lvxji"]
-[ext_resource type="Script" uid="uid://83s7iadfx1ik" path="res://scripts/player/idle_state.gd" id="4_p47bc"]
-[ext_resource type="Script" uid="uid://brq33xg0eixxh" path="res://scripts/player/run_state.gd" id="5_p47bc"]
-[ext_resource type="Script" uid="uid://d4b1u52w12rdu" path="res://scripts/player/fall_state.gd" id="6_75vfm"]
-[ext_resource type="Script" uid="uid://btoegm2sf7w7q" path="res://scripts/player/jump_state.gd" id="6_qek5x"]
-[ext_resource type="Script" uid="uid://l3tjrmjdn3pk" path="res://scripts/player/climb_state.gd" id="8_5gtgg"]
-[ext_resource type="Script" uid="uid://caqvd7w1t6bu5" path="res://scripts/player/damage_state.gd" id="9_5gtgg"]
-[ext_resource type="Script" uid="uid://0wcejhiymw7c" path="res://scripts/player/power_state.gd" id="10_h17s1"]
+[ext_resource type="Script" uid="uid://83s7iadfx1ik" path="res://scripts/player/player_idle_state.gd" id="4_p47bc"]
+[ext_resource type="Script" uid="uid://brq33xg0eixxh" path="res://scripts/player/player_run_state.gd" id="5_p47bc"]
+[ext_resource type="Script" uid="uid://d4b1u52w12rdu" path="res://scripts/player/player_fall_state.gd" id="6_75vfm"]
+[ext_resource type="Script" uid="uid://btoegm2sf7w7q" path="res://scripts/player/player_jump_state.gd" id="6_qek5x"]
+[ext_resource type="Script" uid="uid://l3tjrmjdn3pk" path="res://scripts/player/player_climb_state.gd" id="8_5gtgg"]
+[ext_resource type="Script" uid="uid://caqvd7w1t6bu5" path="res://scripts/player/player_damage_state.gd" id="9_5gtgg"]
+[ext_resource type="Script" uid="uid://0wcejhiymw7c" path="res://scripts/player/player_power_state.gd" id="10_h17s1"]
+[ext_resource type="Script" uid="uid://sr55ck4iq78q" path="res://scripts/player/player_crouch_state.gd" id="11_je7p5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_myrg7"]
 atlas = ExtResource("1_8afob")
@@ -22,6 +23,18 @@ region = Rect2(32, 128, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_uf5tr"]
 atlas = ExtResource("1_8afob")
 region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj68g"]
+atlas = ExtResource("1_8afob")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ioxgp"]
+atlas = ExtResource("1_8afob")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnsyf"]
+atlas = ExtResource("1_8afob")
+region = Rect2(64, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0owmy"]
 atlas = ExtResource("1_8afob")
@@ -102,6 +115,20 @@ animations = [{
 "loop": 1,
 "name": &"climb",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj68g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ioxgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnsyf")
+}],
+"loop": 0,
+"name": &"crouch",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 0.5,
@@ -186,6 +213,9 @@ animations = [{
 radius = 4.0
 height = 16.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06bqy"]
+size = Vector2(8, 14)
+
 [node name="Player" type="CharacterBody2D" unique_id=1574617212]
 collision_layer = 2
 script = ExtResource("1_dovo2")
@@ -193,13 +223,18 @@ script = ExtResource("1_dovo2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=675687901]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_r3ihy")
-animation = &"powerup"
+animation = &"idle"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=632899858]
-visible = false
+[node name="StandCollision" type="CollisionShape2D" parent="." unique_id=632899858]
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_r3ihy")
+
+[node name="CrouchCollision" type="CollisionShape2D" parent="." unique_id=670812265]
+visible = false
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_06bqy")
+debug_color = Color(0.8653214, 0.32666737, 0.38347268, 0.41960785)
 
 [node name="ClimbRayCast2D" type="RayCast2D" parent="." unique_id=1373798666]
 position = Vector2(0, -5)
@@ -231,3 +266,6 @@ script = ExtResource("9_5gtgg")
 
 [node name="PowerState" type="Node" parent="StateMachine" unique_id=1382167318]
 script = ExtResource("10_h17s1")
+
+[node name="CrouchState" type="Node" parent="StateMachine" unique_id=1291591499]
+script = ExtResource("11_je7p5")

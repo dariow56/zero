@@ -1,15 +1,13 @@
-class_name DamageState extends State
-
+class_name PlayerPowerState extends State
 
 func enter() -> void:
 	# Play the animation.
 	if actor.animated_sprite:
-		actor.animated_sprite.play("damage")
-
+		actor.animated_sprite.play("powerup")
+	
 	# Shake the camera.
 	if actor.camera and actor.camera.has_method("shake"):
 		actor.camera.shake()
-
 
 func physics_update(delta: float) -> void:
 	# Add gravity.
@@ -18,7 +16,7 @@ func physics_update(delta: float) -> void:
 		actor.move_and_slide()
 	
 	# Wait until animation is finished.
-	if actor.animated_sprite.is_playing() and actor.animated_sprite.animation == "damage":
+	if actor.animated_sprite.is_playing() and actor.animated_sprite.animation == "powerup":
 		return
 
 	# Fall state.
