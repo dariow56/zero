@@ -6,7 +6,6 @@ class_name State extends Node
 @export var actor: CharacterBody2D
 #endregion 
 
-
 #region /// Actor reference
 var state_machine: StateMachine
 #endregion

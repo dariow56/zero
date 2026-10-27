@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://dnjc5ay8y8r6c" path="res://sprites/enemies/Monitor.png" id="1_bp6v6"]
 [ext_resource type="Script" uid="uid://doq0epi7jcp1a" path="res://scripts/enemies/monitor/monitor_enemy.gd" id="1_byi4s"]
+[ext_resource type="Script" uid="uid://balidh1re0k1r" path="res://scripts/states/state_machine.gd" id="3_7q3v1"]
+[ext_resource type="Script" uid="uid://dptfnj1y1om77" path="res://scripts/enemies/monitor/monitor_scan_state.gd" id="4_hi4b0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_byi4s"]
 atlas = ExtResource("1_bp6v6")
@@ -63,7 +65,6 @@ script = ExtResource("1_byi4s")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=50486368]
 sprite_frames = SubResource("SpriteFrames_r3ihy")
 animation = &"fly"
-autoplay = "fly"
 frame_progress = 0.2766301
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=284890410]
@@ -93,5 +94,12 @@ collision_mask = 2
 position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_lvt73")
 debug_color = Color(0.8402721, 0.36216742, 0.34490323, 0.41960785)
+
+[node name="StateMachine" type="Node" parent="." unique_id=1771967459 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_7q3v1")
+initial_state = NodePath("MonitorScanState")
+
+[node name="MonitorScanState" type="Node" parent="StateMachine" unique_id=749934557]
+script = ExtResource("4_hi4b0")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
