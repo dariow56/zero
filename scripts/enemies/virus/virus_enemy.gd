@@ -5,6 +5,7 @@ class_name VirusEnemy extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var wall_checker: RayCast2D = $WallChecker
 @onready var ledge_checker: RayCast2D = $LedgeChecker
+@onready var state_machine: StateMachine = $StateMachine
 #endregion
 
 
@@ -20,21 +21,16 @@ var direction: int = -1
 
 func _ready() -> void:
 	update_orientation()
+	state_machine.init(self)
 
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	# Initialize the state machine physics update
+	state_machine.physics_update(delta)	
 
-	# Wall detection or ledge. 
-	if is_on_wall() or wall_checker.is_colliding() or not ledge_checker.is_colliding():
-		flip_direction()
-	
-	# Add movement.
-	velocity.x = direction * SPEED
-	animated_sprite.play("run")
-	move_and_slide()
+
+func add_gravity(delta: float) -> void:
+	velocity.y += get_gravity().y * delta
 
 
 func flip_direction() -> void:

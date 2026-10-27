@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://6ib67aq857xq"]
 
-[ext_resource type="Script" uid="uid://c24khpajtdfwv" path="res://scripts/enemies/virus_enemy.gd" id="1_7624n"]
+[ext_resource type="Script" uid="uid://c24khpajtdfwv" path="res://scripts/enemies/virus/virus_enemy.gd" id="1_7624n"]
 [ext_resource type="Texture2D" uid="uid://dwjjuflrmu3nj" path="res://sprites/enemies/Virus.png" id="1_qj5bi"]
+[ext_resource type="Script" uid="uid://balidh1re0k1r" path="res://scripts/states/state_machine.gd" id="3_8kro7"]
+[ext_resource type="Script" uid="uid://y8sf63gim77q" path="res://scripts/enemies/virus/virus_idle_state.gd" id="4_w0726"]
+[ext_resource type="Script" uid="uid://dfx3wfm775dac" path="res://scripts/enemies/virus/virus_patrol_state.gd" id="5_a56c6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ewk8b"]
 atlas = ExtResource("1_qj5bi")
@@ -115,5 +118,15 @@ collision_mask = 2
 position = Vector2(0, -6.5)
 shape = SubResource("RectangleShape2D_r3ihy")
 debug_color = Color(0.808971, 0.37878773, 0.44601524, 0.41960785)
+
+[node name="StateMachine" type="Node" parent="." unique_id=1202089766 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_8kro7")
+initial_state = NodePath("VirusPatrolState")
+
+[node name="VirusIdleState" type="Node" parent="StateMachine" unique_id=1309829657]
+script = ExtResource("4_w0726")
+
+[node name="VirusPatrolState" type="Node" parent="StateMachine" unique_id=29757653]
+script = ExtResource("5_a56c6")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
