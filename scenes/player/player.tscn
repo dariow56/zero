@@ -218,6 +218,7 @@ size = Vector2(8, 14)
 
 [node name="Player" type="CharacterBody2D" unique_id=1574617212]
 collision_layer = 2
+collision_mask = 17
 script = ExtResource("1_dovo2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=675687901]
@@ -240,6 +241,11 @@ debug_color = Color(0.8653214, 0.32666737, 0.38347268, 0.41960785)
 position = Vector2(0, -5)
 target_position = Vector2(0, -3)
 collision_mask = 4
+hit_from_inside = true
+
+[node name="FloorRayCast2D" type="RayCast2D" parent="." unique_id=2080000111]
+target_position = Vector2(0, 3)
+collision_mask = 16
 hit_from_inside = true
 
 [node name="StateMachine" type="Node" parent="." unique_id=816894395 node_paths=PackedStringArray("initial_state")]

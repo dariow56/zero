@@ -4,6 +4,7 @@ class_name Player extends CharacterBody2D
 #region /// Ready Variables
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var climb_raycast: RayCast2D = $ClimbRayCast2D
+@onready var floor_raycast: RayCast2D = $FloorRayCast2D
 @onready var state_machine: StateMachine = $StateMachine
 @onready var stand_collision: CollisionShape2D = $StandCollision
 @onready var crouch_collision: CollisionShape2D = $CrouchCollision
@@ -107,16 +108,29 @@ func crouch_movement(dir: float) -> void:
 		velocity.x = dir * CROUCH_SPEED
 		if animated_sprite:
 			animated_sprite.flip_h = (dir < 0)
-		else:
-			velocity.x = move_toward(velocity.x, 0, CROUCH_SPEED)
+	else:
+		velocity.x = move_toward(velocity.x, 0, CROUCH_SPEED)
 
-		move_and_slide()
+	move_and_slide()
 
 
 func set_crouch_collision(is_crouching: bool) -> void:
 	if stand_collision and crouch_collision:
 		stand_collision.disabled = is_crouching
 		crouch_collision.disabled = not is_crouching
+
+
+func is_on_one_way_platform() -> bool:
+	if floor_raycast.is_colliding():
+		return true
+	return false
+
+
+func drop_through_platform() -> void:
+	# Move player 2px down to through the platfom and give him a few
+	# vertical impulse to avoid the floor snap
+	position.y += 2
+	velocity.y = 10
 
 
 func get_damage() -> void:
