@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dnjc5ay8y8r6c"
-path="res://.godot/imported/Monitor.png-43a1ca6cf66838ee57a31cf3463b5217.ctex"
+path="res://.godot/imported/monitor.png-81ffe1f3ffffca4f68bb64675ad2e0b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/enemies/Monitor.png"
-dest_files=["res://.godot/imported/Monitor.png-43a1ca6cf66838ee57a31cf3463b5217.ctex"]
+source_file="res://sprites/enemies/monitor.png"
+dest_files=["res://.godot/imported/monitor.png-81ffe1f3ffffca4f68bb64675ad2e0b4.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 class_name VirusIdleState extends State
 
 
- #region /// Export Variables
+#region /// Export Variables
 @export var idle_time: float = 1.5 
 #endregion
 

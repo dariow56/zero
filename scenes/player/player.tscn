@@ -216,7 +216,7 @@ height = 16.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06bqy"]
 size = Vector2(8, 14)
 
-[node name="Player" type="CharacterBody2D" unique_id=1574617212]
+[node name="Player" type="CharacterBody2D" unique_id=1574617212 groups=["Player"]]
 collision_layer = 2
 collision_mask = 17
 script = ExtResource("1_dovo2")

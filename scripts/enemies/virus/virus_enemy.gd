@@ -8,11 +8,9 @@ class_name VirusEnemy extends CharacterBody2D
 @onready var state_machine: StateMachine = $StateMachine
 #endregion
 
-
 #region /// Constants
 const SPEED = 50.0
 #endregion
-
 
 #region /// Variables
 var direction: int = -1

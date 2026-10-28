@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://6ib67aq857xq"]
 
 [ext_resource type="Script" uid="uid://c24khpajtdfwv" path="res://scripts/enemies/virus/virus_enemy.gd" id="1_7624n"]
-[ext_resource type="Texture2D" uid="uid://dwjjuflrmu3nj" path="res://sprites/enemies/Virus.png" id="1_qj5bi"]
+[ext_resource type="Texture2D" uid="uid://dwjjuflrmu3nj" path="res://sprites/enemies/virus.png" id="1_qj5bi"]
 [ext_resource type="Script" uid="uid://balidh1re0k1r" path="res://scripts/states/state_machine.gd" id="3_8kro7"]
 [ext_resource type="Script" uid="uid://y8sf63gim77q" path="res://scripts/enemies/virus/virus_idle_state.gd" id="4_w0726"]
 [ext_resource type="Script" uid="uid://dfx3wfm775dac" path="res://scripts/enemies/virus/virus_patrol_state.gd" id="5_a56c6"]

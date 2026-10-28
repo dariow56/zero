@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://bda2rqhnmgdsn"]
+
+[ext_resource type="Texture2D" uid="uid://yffhy3m0rvly" path="res://sprites/enemies/xploit.png" id="1_j8k2b"]
+[ext_resource type="Script" uid="uid://dvb2sq2tfkgix" path="res://scripts/enemies/xploit/xploit_enemy.gd" id="1_ps06t"]
+[ext_resource type="Script" uid="uid://balidh1re0k1r" path="res://scripts/states/state_machine.gd" id="3_iodbh"]
+[ext_resource type="Script" uid="uid://rbeygqk8n2tt" path="res://scripts/enemies/xploit/xploit_idle_state.gd" id="4_iga8w"]
+[ext_resource type="Script" uid="uid://bth51hsoipy6r" path="res://scripts/enemies/xploit/xploit_patrol_state.gd" id="6_uq88l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps06t"]
+atlas = ExtResource("1_j8k2b")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iodbh"]
+atlas = ExtResource("1_j8k2b")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnqsp"]
+atlas = ExtResource("1_j8k2b")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iga8w"]
+atlas = ExtResource("1_j8k2b")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq88l"]
+atlas = ExtResource("1_j8k2b")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j21yu"]
+atlas = ExtResource("1_j8k2b")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qp55j"]
+atlas = ExtResource("1_j8k2b")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11yv8"]
+atlas = ExtResource("1_j8k2b")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4ix3"]
+atlas = ExtResource("1_j8k2b")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r3ihy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ps06t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iodbh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnqsp")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iga8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq88l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j21yu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qp55j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11yv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4ix3")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_06bqy"]
+radius = 5.0
+height = 12.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j8k2b"]
+radius = 5.0
+height = 12.0
+
+[node name="XploitEnemy" type="CharacterBody2D" unique_id=865748951]
+collision_layer = 8
+collision_mask = 17
+script = ExtResource("1_ps06t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=562200680]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_r3ihy")
+animation = &"idle"
+frame_progress = 0.031467747
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=381231861]
+position = Vector2(0, -6)
+shape = SubResource("CapsuleShape2D_06bqy")
+
+[node name="WallChecker" type="RayCast2D" parent="." unique_id=480926048]
+position = Vector2(5, -6)
+target_position = Vector2(12, 0)
+
+[node name="LedgeChecker" type="RayCast2D" parent="." unique_id=487761413]
+position = Vector2(5, 0)
+target_position = Vector2(0, 10)
+collision_mask = 17
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=760833836]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=295600024]
+position = Vector2(0, -6)
+shape = SubResource("CapsuleShape2D_j8k2b")
+debug_color = Color(0.8390738, 0.35712525, 0.38793558, 0.41960785)
+
+[node name="StateMachine" type="Node" parent="." unique_id=202982107 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_iodbh")
+initial_state = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=982508638]
+script = ExtResource("4_iga8w")
+
+[node name="PatrolState" type="Node" parent="StateMachine" unique_id=1016465675]
+script = ExtResource("6_uq88l")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
