@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://6nus6fdtc7ca"]
+
+[ext_resource type="Script" uid="uid://bdav55eloo8r0" path="res://scripts/elements/sign_post.gd" id="1_dvbuh"]
+[ext_resource type="Texture2D" uid="uid://cikoh3a835gfw" path="res://sprites/elements/props.png" id="1_sn0bk"]
+[ext_resource type="Texture2D" uid="uid://dfi0x1utn38dv" path="res://sprites/dialogs/en/dialog_1.png" id="3_dvbuh"]
+[ext_resource type="Texture2D" uid="uid://d175l87n52k72" path="res://sprites/dialogs/en/press_e.png" id="4_3vitf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r3ihy"]
+radius = 6.0
+
+[node name="SignPost" type="Area2D" unique_id=1276473012]
+texture_filter = 1
+collision_mask = 2
+script = ExtResource("1_dvbuh")
+image_texture = ExtResource("3_dvbuh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2061611282]
+texture = ExtResource("1_sn0bk")
+region_enabled = true
+region_rect = Rect2(48, 80, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2033644418]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_r3ihy")
+debug_color = Color(0.7872056, 0.39882633, 0.44853884, 0.41960785)
+
+[node name="SpriteLabel" type="Sprite2D" parent="." unique_id=117954329]
+texture_filter = 1
+position = Vector2(0, -32)
+texture = ExtResource("4_3vitf")
+region_rect = Rect2(0, 0, 52, 16)
+
+[node name="HintBox" type="Sprite2D" parent="." unique_id=1683822935]
+texture_filter = 1
+position = Vector2(0, -40)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -116,9 +116,8 @@ func crouch_movement(dir: float) -> void:
 
 func set_crouch_collision(is_crouching: bool) -> void:
 	if stand_collision and crouch_collision:
-		stand_collision.disabled = is_crouching
-		crouch_collision.disabled = not is_crouching
-
+		stand_collision.set_deferred("disabled", is_crouching)
+		crouch_collision.set_deferred("disabled", not is_crouching)
 
 func is_on_one_way_platform() -> bool:
 	if floor_raycast.is_colliding():

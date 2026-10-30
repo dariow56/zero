@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cqbeeq6p5ohvj" path="res://scenes/enemies/monitor_enemy.tscn" id="15_2li26"]
 [ext_resource type="PackedScene" uid="uid://d1vpuc0ft4viv" path="res://scenes/elements/one_way_platform.tscn" id="15_5gmqu"]
 [ext_resource type="PackedScene" uid="uid://bda2rqhnmgdsn" path="res://scenes/enemies/xploit_enemy.tscn" id="16_5gmqu"]
+[ext_resource type="PackedScene" uid="uid://6nus6fdtc7ca" path="res://scenes/elements/sign_post.tscn" id="17_kgokd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o8weq"]
 texture = ExtResource("2_n6048")
@@ -868,10 +869,12 @@ point_count = 10
 
 [node name="Player" parent="." unique_id=1574617212 instance=ExtResource("1_62it3")]
 z_index = 1
-position = Vector2(-304, 48)
+position = Vector2(-336, 48)
 
 [node name="Camera2D" parent="Player" unique_id=1991796323 instance=ExtResource("2_vmfr1")]
 position = Vector2(0, -32)
+limit_enabled = false
+position_smoothing_enabled = false
 random_strength = 2.0
 
 [node name="Map" type="Node2D" parent="." unique_id=794220570]
@@ -896,6 +899,7 @@ speed_scale = 1.5
 position = Vector2(184, 208)
 curve = SubResource("Curve2D_y4d5c")
 loop = false
+speed_scale = 1.2
 
 [node name="MovingPlatform3" parent="Platforms" unique_id=546752681 instance=ExtResource("4_c53nr")]
 position = Vector2(264, 280)
@@ -957,7 +961,7 @@ position = Vector2(1448, -24)
 position = Vector2(1600, 258)
 curve = SubResource("Curve2D_b3j4y")
 loop = false
-speed_scale = 0.5
+speed_scale = 0.2
 
 [node name="Traps" type="Node2D" parent="." unique_id=477123652]
 
@@ -1012,3 +1016,6 @@ position = Vector2(1232, 40)
 
 [node name="XploitEnemy" parent="Enemies" unique_id=865748951 instance=ExtResource("16_5gmqu")]
 position = Vector2(1448, -32)
+
+[node name="SignPost" parent="." unique_id=1276473012 instance=ExtResource("17_kgokd")]
+position = Vector2(-296, 40)

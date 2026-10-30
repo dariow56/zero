@@ -1,4 +1,4 @@
-class_name DisappearingPlatform extends AnimatableBody2D
+class_name DisappearingPlatform extends StaticBody2D
 
 
 #region /// Export Variables
