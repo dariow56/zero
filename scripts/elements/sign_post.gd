@@ -16,6 +16,7 @@ var player_in_range: bool = false
 func _ready() -> void:
 	player_in_range = false
 
+	# Hide UI elements by default on startup.
 	if label:
 		label.visible = false
 	
@@ -24,8 +25,8 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	# Trigger interaction only if the player is in range and presses the action key.
 	if player_in_range and event.is_action_pressed("interact"):
-		# Show the local dialog box.
 		if hint_box:
 			hint_box.visible = not hint_box.visible
 			if hint_box.visible and image_texture:
@@ -33,15 +34,18 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.name == 'Player':
+	# Check if colliding body belongs to the player group.
+	if body.is_in_group("player"):
 		player_in_range = true
-
+		
+		# Show the interaction prompt.
 		if label:
 			label.visible = true
 
 
 func _on_body_exited(body: Node2D) -> void:
-	if body.name == 'Player':
+	# Reset the states and hide UI when the player leaves the area.
+	if body.is_in_group("player"):
 		player_in_range = false
 
 		if label:
